@@ -1,0 +1,16 @@
+package cn.edu.seu.myjvm.instructions.extended;
+
+import cn.edu.seu.myjvm.instructions.base.BranchInstruction;
+import cn.edu.seu.myjvm.runtime.Frame;
+
+/**
+ * Created by a on 2018/2/27.
+ */
+public class IFNULL extends BranchInstruction {
+    @Override
+    public void execute(Frame frame) throws Exception {
+        Object ref = frame.getOperandStack().popRef();
+        if (ref == null)
+            super.branch(frame, super.getOffset());
+    }
+}
